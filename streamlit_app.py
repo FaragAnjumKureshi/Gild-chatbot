@@ -62,11 +62,19 @@ def main():
                     st_c_chat.chat_message(msg["role"]).markdown((msg["content"]))
 
     def generate_response(prompt):
-        pattern = r'\b(i(\'?m| am| feel| think i(\'?)?m)?\s*(so\s+)?(stupid|ugly|dumb|idiot|worthless|loser|useless))\b'
-        if re.search(pattern, prompt, re.IGNORECASE):
-            return "Yes, you are!"
-        else:
-            return f"You say: {prompt}."
+        starters = ["Bruschetta", "Spring Rolls", "Tomato Soup", "Garlic Bread", "Stuffed Mushrooms"]
+        mains = ["Grilled Salmon", "Pasta Alfredo", "Butter Chicken", "Veggie Burger", "Beef Tacos"]
+        desserts = ["Chocolate Mousse", "Cheesecake", "Tiramisu", "Fruit Salad", "Ice Cream Sundae"]
+
+        food_keywords = ["hungry", "what to eat", "food", "dinner", "lunch", "breakfast", "snack", "meal", "eat", "starving"]
+
+    if any(word in prompt.lower() for word in food_keywords):
+        starter = random.choice(starters)
+        main = random.choice(mains)
+        dessert = random.choice(desserts)
+        return f"Here's a 3-course meal for you:\n🍽 Starter: {starter}\n🥘 Main Course: {main}\n🍰 Dessert: {dessert}"
+    else:
+        return f"You say: {prompt}."
         
     # Chat function section (timing included inside function)
     def chat(prompt: str):
