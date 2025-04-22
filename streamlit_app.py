@@ -2,6 +2,7 @@ import streamlit as st
 from openai import OpenAI
 import time
 import re
+import random
 
 placeholderstr = "Please input your command"
 user_name = "Gild"
@@ -66,15 +67,15 @@ def main():
         mains = ["Grilled Salmon", "Pasta Alfredo", "Butter Chicken", "Veggie Burger", "Beef Tacos"]
         desserts = ["Chocolate Mousse", "Cheesecake", "Tiramisu", "Fruit Salad", "Ice Cream Sundae"]
 
-        food_keywords = ["hungry", "what to eat", "food", "dinner", "lunch", "breakfast", "snack", "meal", "eat", "starving"]
+            food_keywords = ["hungry", "what to eat", "food", "dinner", "lunch", "breakfast", "snack", "meal", "eat", "starving"]
 
-    if any(word in prompt.lower() for word in food_keywords):
-        starter = random.choice(starters)
-        main = random.choice(mains)
-        dessert = random.choice(desserts)
-        return f"Here's a 3-course meal for you:\n🍽 Starter: {starter}\n🥘 Main Course: {main}\n🍰 Dessert: {dessert}"
-    else:
-        return f"You say: {prompt}."
+            if any(word in prompt.lower() for word in food_keywords):
+                starter = random.choice(starters)
+                main = random.choice(mains)
+                dessert = random.choice(desserts)
+                return f"Here's a 3-course meal for you:\n🍽 Starter: {starter}\n🥘 Main Course: {main}\n🍰 Dessert: {dessert}"
+            else:
+                return f"You say: {prompt}."
         
     # Chat function section (timing included inside function)
     def chat(prompt: str):
