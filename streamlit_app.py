@@ -5,7 +5,7 @@ import re
 import random
 
 placeholderstr = "Please input your command"
-user_name = "Gild"
+user_name = "Farag's"
 user_image = "https://www.w3schools.com/howto/img_avatar.png"
 
 def stream_data(stream_str):
